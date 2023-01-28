@@ -1,4 +1,4 @@
-//���ڂł�BFS
+//二次元グリッドでのBFS
 vector<ll> dx = { 1,0,-1,0 }, dy = { 0,1,0,-1 };
 vector<ll> bfs(vector<string> s) {
     ll h = s.size(), w = s[0].size();
