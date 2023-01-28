@@ -1,4 +1,5 @@
-//‰ñ•¶‚©‚Ç‚¤‚©
+//å›æ–‡ã‹ã©ã†ã‹
+
 bool pal(string s) {
     ll n = s.size();
     rep(i, n) {
