@@ -1,0 +1,43 @@
+
+bool IsPrime(int num)
+{
+    if (num < 2) return false;
+    else if (num == 2) return true;
+    else if (num % 2 == 0) return false; // 偶数はあらかじめ除く
+
+    double sqrtNum = sqrt(num);
+    for (int i = 3; i <= sqrtNum; i += 2)
+    {
+        if (num % i == 0)
+        {
+            // 素数ではない
+            return false;
+        }
+    }
+
+    // 素数である
+    return true;
+}
+
+
+//demand on IsPrime
+//円素数かどうかを返す　計算量は良くない
+bool circle(ll n) {
+    string s; s = to_string(n);
+    ll N = s.size();
+    rep(i, N) {
+        if (i >= 2 && (s[i] == '0' || s[i] == '2' || s[i] == '4' || s[i] == '5' || s[i] == '6' || s[i] == '8')) {
+            return false;
+        }
+    }
+    rep(i, N) {
+        if (IsPrime(n)) {
+            rotate(s.begin(), s.begin() + 1, s.end());
+            n = stoi(s);
+        }
+        else {
+            return false;
+        }
+    }
+
+}
