@@ -1,3 +1,5 @@
+//structに変更したい
+
 vector<vector<Pll>> G;
 vector<bool> seen;
 void dfs(ll v, ll dist, Pll& ans) {
@@ -34,6 +36,6 @@ int main() {
 		seen[i] = false;
 	}
 	dfs(u, 0, ans);
-	cout << u << " " << ans.first << endl;//�[�_
+	cout << u << " " << ans.first << endl;//’[“_
 	cout << ans.second << endl;//diamiter
 }
