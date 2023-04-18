@@ -162,6 +162,25 @@ ll LIS(const std::vector<ll>& v){
 	}
 	return dp.size();
 }
+
+vll Cumlative_Sum_of_Vector(vll A) {
+	ll n = A.size();
+	vll S(n + 1);
+	S[0] = 0;
+	rep(i, n) {
+		S[i + 1] = S[i] + A[i];
+	}
+	return S;
+}
+
+bool Isin(ll a, ll b, ll H, ll W) {
+	if (a >= 0 && a < H && b >= 0 && b < W) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 /////////////////////////////////////////////////////
 
 int main() {
