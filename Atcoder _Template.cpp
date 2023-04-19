@@ -64,10 +64,14 @@ ll OnetoN_sum(ll N) {
 template<typename T>
 void outvec(vector<T> A) {
 	ll N = A.size();
-	rep(i, N) {
-		cout << A[i] << " ";
-	}
+	rep(i, N) {	cout << A[i] << " ";}
 	cout << endl;
+	return;
+}
+template<typename T>
+void outvec(vector<vector<T>> A) {
+	ll N = A.size();
+	rep(i, N) { outvec(A[i]); }
 	return;
 }
 
@@ -102,13 +106,13 @@ vector<long long> divisor(T n) {
 }
 
 template<typename T = int>
-bool isp(T num){
+bool isp(T num) {
 	if (num < 2) return false;
 	else if (num == 2) return true;
 	else if (num % 2 == 0) return false;
 	double sqrtNum = sqrt(num);
-	for (int i = 3; i <= sqrtNum; i += 2){
-		if (num % i == 0){
+	for (int i = 3; i <= sqrtNum; i += 2) {
+		if (num % i == 0) {
 			return false;
 		}
 	}
@@ -149,14 +153,14 @@ long long COM(int n, int k) {
 	return fac[n] * (finv[k] * finv[n - k] % MOD) % MOD;
 }
 
-ll LIS(const std::vector<ll>& v){
+ll LIS(const std::vector<ll>& v) {
 	std::vector<ll> dp;
-	for (const auto& elem : v){
+	for (const auto& elem : v) {
 		auto it = std::lower_bound(dp.begin(), dp.end(), elem);
-		if (it == dp.end()){
+		if (it == dp.end()) {
 			dp.push_back(elem);
 		}
-		else{
+		else {
 			*it = elem;
 		}
 	}
@@ -183,8 +187,11 @@ bool Isin(ll a, ll b, ll H, ll W) {
 }
 /////////////////////////////////////////////////////
 
+
 int main() {
 	cout << fixed << setprecision(10);
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
+
+	
 }
