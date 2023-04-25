@@ -64,7 +64,7 @@ ll OnetoN_sum(ll N) {
 template<typename T>
 void outvec(vector<T> A) {
 	ll N = A.size();
-	rep(i, N) {	cout << A[i] << " ";}
+	rep(i, N) { cout << A[i] << " "; }
 	cout << endl;
 	return;
 }
@@ -185,13 +185,51 @@ bool Isin(ll a, ll b, ll H, ll W) {
 		return false;
 	}
 }
-/////////////////////////////////////////////////////
 
+vll BFS(vvll G, ll start) {
+	queue<ll> que;
+	vll dist(G.size(), -1);
+	dist[start] = 0;
+	que.push(start);
+	while (!que.empty()) {
+		ll v = que.front();
+		que.pop();
+		for (auto nv : G[v]) {
+			if (dist[nv] != -1) {
+				continue;
+			}
+			dist[nv] = dist[v] + 1;
+			que.push(nv);
+		}
+	}
+	return dist;
+}
+
+vvll BFS2(vvll G) {
+	vvll dist(G.size(), vll(G.size(),-1));
+	rep(i, G.size()) {
+		queue<ll> que;
+		dist[i][i] = 0;
+		que.push(i);
+		while (!que.empty()) {
+			ll v = que.front();
+			que.pop();
+			for (auto nv : G[v]) {
+				if (dist[i][nv] != -1) {
+					continue;
+				}
+				dist[i][nv] = dist[i][v] + 1;
+				que.push(nv);
+			}
+		}
+	}
+	return dist;
+}
+/////////////////////////////////////////////////////
 
 int main() {
 	cout << fixed << setprecision(10);
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
-	
 }
