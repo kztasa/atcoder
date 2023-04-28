@@ -232,7 +232,7 @@ vvll BFS2(vvll G) {
 /////////////////////////////////////////////////////
 
 vvll B = {
-	{1,2,3,4,5},
+	{2,3,4,5,14},
 	{2,3,4,5,6},
 	{3,4,5,6,7},
 	{4,5,6,7,8},
@@ -242,9 +242,9 @@ vvll B = {
 	{8,9,10,11,12},
 	{9,10,11,12,13},
 	{1,10,11,12,13},
-	{1,2,11,12,13},
-	{1,2,3,12,13},
-	{1,2,3,4,13}
+	{2,11,12,13,14},
+	{2,3,12,13,14},
+	{2,3,4,13,14}
 };
 bool IsRoyal(vector<pair<ll, char>> P) {
 	vll a = { 1,10,11,12,13 };
@@ -357,6 +357,7 @@ int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(nullptr);
 
+	ll ans = 0;
 	rep(Z, 1000) {
 		//input
 		vector<pair<ll, char>> P1, P2;
@@ -377,7 +378,7 @@ int main() {
 				a.first = 13;
 			}
 			else if (s[0] == 'A') {
-				a.first = 1;
+				a.first = 14;
 			}
 			else {
 				a.first = s[0] - '0';
@@ -401,7 +402,7 @@ int main() {
 				a.first = 13;
 			}
 			else if (s[0] == 'A') {
-				a.first = 1;
+				a.first = 14;
 			}
 			else {
 				a.first = s[0] - '0';
@@ -433,5 +434,23 @@ int main() {
 		if (IsOnepair(P2)) { chmax(yaku.second, 2ll); }
 
 		//勝敗判定
+		if (yaku.first > yaku.se) {
+			ans++;
+		}
+		else if (yaku.first < yaku.se) {
+			continue;
+		}
+		else {
+			per(i, 5) {
+				if (P1[i].first > P2[i].first) {
+					ans++;
+					break;
+				}
+				else if (P1[i].first < P2[i].first) {
+					break;
+				}
+			}
+		}
 	}
+	cout << ans << endl;
 }
