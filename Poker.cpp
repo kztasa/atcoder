@@ -280,7 +280,7 @@ bool IsStraightFlush(vector<pair<ll, char>> P) {
 	return false;
 }
 bool IsFour(vector<pair<ll, char>> P) {
-	vll cnt(13);
+	vll cnt(17);
 	rep(i, 5) {
 		cnt[P[i].first - 1]++;
 		if (cnt[P[i].first - 1] == 4) {
@@ -322,7 +322,7 @@ bool IsStraight(vector<pair<ll, char>> P) {
 
 }
 bool IsThree(vector<pair<ll, char>> P) {
-	vll cnt(13);
+	vll cnt(17);
 	rep(i, 5) {
 		cnt[P[i].first - 1]++;
 		if (cnt[P[i].first - 1] == 3) {
@@ -411,6 +411,7 @@ int main() {
 		}
 		sort(all(P1));
 		sort(all(P2));
+
 		//役判定
 		Pll yaku = { 1,1 };
 		if (IsRoyal(P1)) { chmax(yaku.first, 10ll); }
