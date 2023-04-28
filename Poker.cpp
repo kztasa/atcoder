@@ -442,13 +442,184 @@ int main() {
 			continue;
 		}
 		else {
-			per(i, 5) {
-				if (P1[i].first > P2[i].first) {
-					ans++;
-					break;
+			map<ll, ll> cnt, cnt2;
+			rep(i, 5) {
+				cnt[P1[i].first]++;
+				cnt2[P2[i].first]++;
+			}
+			ll num = 0, num2 = 0;
+			if (yaku.first == 9) {
+				per(i, 5) {
+					if (P1[i].first > P2[i].first) {
+						ans++;
+						break;
+					}
+					else if (P1[i].first < P2[i].first) {
+						break;
+					}
 				}
-				else if (P1[i].first < P2[i].first) {
-					break;
+			}
+			else if (yaku.first == 8) {
+				ll num3 = 0, num4 = 0;
+				for (auto a : cnt) {
+					if (a.second == 4) { num = a.first; }
+					else { num3 = a.first; }
+				}
+				for (auto a : cnt2) {
+					if (a.second == 4) { num2 = a.first; }
+					else { num4 = a.first; }
+				}
+				if (num > num2) {
+					ans++;
+				}
+				else if (num == num2) {
+					if (num3 > num4) {
+						ans++;
+					}
+				}
+			}
+			else if (yaku.first == 7) {
+				ll num3 = 0, num4 = 0;
+				for (auto a : cnt) {
+					if (a.second == 3) { num = a.first; }
+					else { num3 = a.first; }
+				}
+				for (auto a : cnt2) {
+					if (a.second == 3) { num2 = a.first; }
+					else { num4 = a.first; }
+				}
+				if (num > num2) {
+					ans++;
+				}
+				else if (num == num2) {
+					if (num3 > num4) {
+						ans++;
+					}
+				}
+			}
+			else if (yaku.first == 5 || yaku.first == 1) {
+				per(i, 5) {
+					if (P1[i].first > P2[i].first) {
+						ans++;
+						break;
+					}
+					else if (P1[i].first < P2[i].first) {
+						break;
+					}
+				}
+			}
+			else if (yaku.first == 4) {
+				ll num3 = 0, num4 = 0;
+				ll num5 = 0, num6 = 0;
+				for (auto a : cnt) {
+					if (a.second == 3) { num = a.first; }
+					else { 
+						if (num3 == 0) {
+							num3 = a.first;
+						}
+						else {
+							num5 = a.first;
+						}
+					}
+				}
+				for (auto a : cnt2) {
+					if (a.second == 3) { num2 = a.first; }
+					else { 
+						if (num4 == 0) {
+							num4 = a.first;
+						}
+						else {
+							num6 = a.first;
+						}
+					}
+				}
+				if (num > num2) {
+					ans++;
+				}
+				else if (num == num2) {
+					if (num3 > num4) {
+						ans++;
+					}
+				}
+			}
+			else if (yaku.first == 3) {
+				ll num3 = 0, num4 = 0;
+				ll num5 = 0, num6 = 0;
+				for (auto a : cnt) {
+					if (a.second == 2) {
+						if (num == 0) {
+							num = a.first;
+						}
+						else {
+							num3 = a.first;
+						}
+					}
+					else {
+						num5 = a.first;
+					}
+				}
+				for (auto a : cnt2) {
+					if (a.second == 2) {
+						if (num2 == 0) {
+							num2 = a.first;
+						}
+						else {
+							num4 = a.first;
+						}
+					}
+					else {
+						num6 = a.first;
+					}
+				}
+				if (num < num3) { swap(num, num3); }
+				if (num2 < num4) { swap(num2, num4); }
+				if (num > num2) {
+					ans++;
+				}
+				else if (num == num2) {
+					if (num3 > num4) {
+						ans++;
+					}
+					else if (num3 == num4) {
+						if (num5 > num6) {
+							ans++;
+						}
+					}
+				}
+			}
+			else if (yaku.first == 2) {
+				vll Num, Num2;
+				for (auto a : cnt) {
+					if (a.second == 2) {
+						num = a.first;
+					}
+					else {
+						Num.eb(a.first);
+					}
+				}
+				for (auto a : cnt2) {
+					if (a.second == 2) {
+						num2 = a.first;
+					}
+					else {
+						Num2.eb(a.first);
+					}
+				}
+				sort(all(Num)), sort(all(Num2));
+				if (num > num2) {
+					ans++;
+					continue;
+				}
+				else if (num == num2) {
+					per(i, 3) {
+						if (Num[i] > Num2[i]) {
+							ans++;
+							break;
+						}
+						else if (Num[i] < Num2[i]) {
+							break;
+						}
+					}
 				}
 			}
 		}
