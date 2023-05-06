@@ -49,6 +49,10 @@ bool chmin(T& a, const T& b) {
 	return false;
 }
 
+ll rem(ll A, ll B) {
+	ll t = A % B; if (t < 0) { t += B; } return t;
+}
+
 string zfill(int n, const int width)
 {
 	stringstream ss;
@@ -103,6 +107,17 @@ vector<long long> divisor(T n) {
 	}
 	sort(ret.begin(), ret.end()); // 昇順に並べる
 	return ret;
+}
+
+template<typename T = int>
+vector<vector<ll>> div2(ll N) {
+	vector<vector<ll>> isprime(N + 1);
+	for (ll p = 1; p <= N; ++p) {
+		for (ll q = p; q <= N; q += p) {
+			isprime[q].eb(p);
+		}
+	}
+	return isprime;
 }
 
 template<typename T = int>
@@ -206,7 +221,7 @@ vll BFS(vvll G, ll start) {
 }
 
 vvll BFS2(vvll G) {
-	vvll dist(G.size(), vll(G.size(),-1));
+	vvll dist(G.size(), vll(G.size(), -1));
 	rep(i, G.size()) {
 		queue<ll> que;
 		dist[i][i] = 0;
@@ -225,6 +240,7 @@ vvll BFS2(vvll G) {
 	}
 	return dist;
 }
+
 /////////////////////////////////////////////////////
 
 int main() {
