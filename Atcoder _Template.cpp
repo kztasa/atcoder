@@ -158,7 +158,7 @@ bool isp(T num) {
 }
 
 template<typename T = int>
-vbool Era(ll N) {
+vbool era(ll N) {
 	vbool isprime(N + 1, true);
 	isprime[0] = isprime[1] = false;
 	for (ll p = 2; p <= N; ++p) {
@@ -174,7 +174,7 @@ const int MAX = 510000;
 const int MOD = 1020202009;
 long long fac[MAX], finv[MAX], inv[MAX];
 
-void COMinit() {
+void cominit() {
 	fac[0] = fac[1] = 1;
 	finv[0] = finv[1] = 1;
 	inv[1] = 1;
@@ -185,13 +185,13 @@ void COMinit() {
 	}
 }
 
-ll COM(ll n, ll k) {
+ll com(ll n, ll k) {
 	if (n < k) return 0;
 	if (n < 0 || k < 0) return 0;
 	return fac[n] * (finv[k] * finv[n - k] % MOD) % MOD;
 }
 
-ll LIS(const vll& v) {
+ll lis(const vll& v) {
 	vector<ll> dp;
 	for (const auto& elem : v) {
 		auto it = lower_bound(all(dp), elem);
@@ -205,7 +205,7 @@ ll LIS(const vll& v) {
 	return dp.size();
 }
 
-vll Cumlative_Sum_of_Vector(vll A) {
+vll cumlative_Sum_of_Vector(vll A) {
 	ll n = A.size();
 	vll S(n + 1);
 	S[0] = 0;
@@ -215,7 +215,7 @@ vll Cumlative_Sum_of_Vector(vll A) {
 	return S;
 }
 
-bool Isin(ll a, ll b, ll H, ll W) {
+bool isin(ll a, ll b, ll H, ll W) {
 	if (a >= 0 && a < H && b >= 0 && b < W) {
 		return true;
 	}
@@ -224,7 +224,7 @@ bool Isin(ll a, ll b, ll H, ll W) {
 	}
 }
 
-vll BFS(vvll G, ll start) {
+vll bfs(vvll G, ll start) {
 	queue<ll> que;
 	vll dist(G.size(), -1);
 	dist[start] = 0;
@@ -243,7 +243,7 @@ vll BFS(vvll G, ll start) {
 	return dist;
 }
 
-vvll BFS2(vvll G) {
+vvll bfs2(vvll G) {
 	vvll dist(G.size(), vll(G.size(), -1));
 	rep(i, G.size()) {
 		queue<ll> que;
@@ -265,7 +265,7 @@ vvll BFS2(vvll G) {
 }
 /////////////////////////////////////////////////////
 
-char SMALL(char a) {
+char smallchar(char a) {
 	if (a - 'a' < 26 && a - 'a' >= 0) {
 		return a;
 	}
@@ -273,7 +273,7 @@ char SMALL(char a) {
 		return char(a + 32);
 	}
 }
-char LARGE(char a) {
+char largechar(char a) {
 	if (a - 'A' < 26) {
 		return a;
 	}
