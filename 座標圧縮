@@ -1,0 +1,16 @@
+vll compression(vll A){
+	ll N = A.size();
+	vll B(N);
+	map<ll,ll> C;
+	rep(i,N){
+		B[i] = A[i];
+	}
+	sort(all(A));
+	rep(i,N){
+		C[A[i]] = i;
+	}
+	rep(i,N){
+		B[i] = C[B[i]];
+	}
+	return B;
+}
