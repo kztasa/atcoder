@@ -1,0 +1,55 @@
+//右に90度回転
+template<typename T>
+vector<vector<T>> right_rotate(vector<vector<T>> A){
+	ll H = A.size();
+	ll W = A[0].size();
+	vector<vector<T>> B(W,vector<T>(H));
+	rep(i,W){
+		rep(j,H){
+			B[i][j] = A[H-j-1][i];
+		}
+	}
+	return B;
+}
+//左に90度回転
+template<typename T>
+vector<vector<T>> left_rotate(vector<vector<T>> A){
+	ll H = A.size();
+	ll W = A[0].size();
+	vector<vector<T>> B(W,vector<T>(H));
+	rep(i,W){
+		rep(j,H){
+			B[i][j] = A[j][W-i-1];
+		}
+	}
+	return B;
+}
+
+//グリッドを数値座標に変換する
+vvll char_to_int(vvchar A){
+	ll H = A.size();
+	ll W = A[0].size();
+	vvll B(H,vll(W));
+	rep(i,H){
+		rep(j,W){
+			if(A[i][j]=='#'){
+				B[i][j] = 1;
+			}
+			else{
+				continue;
+			}
+		}
+	}
+	return B;
+}
+//N＊Nのグリッドに(x,y)を角としてM*Mのグリッドを張り付ける
+vvll Glid_paste(vvll Glid, vvll A, ll x, ll y){
+	ll H = A.size();
+	ll W = A[0].size();
+	rep(i,H){
+		rep(j,W){
+			Glid[i+x][j+y] += A[i][j];
+		}
+	}
+	return Glid;
+}
